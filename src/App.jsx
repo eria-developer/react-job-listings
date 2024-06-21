@@ -1,18 +1,22 @@
 import React from "react";
+import NavBar from "./components/NavBar";
+import Hero from "./components/Hero";
+import HomeCards from "./components/HomeCards";
+import JobListings from "./components/JobListings";
+import ViewAllJobs from "./components/ViewAllJobs";
 
 const App = () => {
-  const names = ["Eria", "cyber", "jackson"];
-  const isloggedIn = true;
-
   return (
     <>
-      <h3>Below are the names</h3>
-      <p>
-        {names.map((name) => (
-          <p key={name}>{name}</p>
-        ))}
-      </p>
-      <h2>{isloggedIn ? "Hey members" : "Ai aint logged in"}</h2>
+      <NavBar />
+      <Hero
+        title="Become a better developer"
+        subtitle="Find a real job that fits your skill set"
+      />
+      <HomeCards />
+      <JobListings />
+
+      <ViewAllJobs />
     </>
   );
 };
