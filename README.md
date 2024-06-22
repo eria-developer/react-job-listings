@@ -1,11 +1,9 @@
-# React + Vite
+# Simple application to list jobs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I have built a simple react application that displays jobs.
+I have a file named jobs.json where i hard coded the json format jobs. however whne developing i used a package named json server which chnaged that file to an api.
+I implemented the CRUD functions and some core functionalities like usestate, useeffect, react router etc.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
 
