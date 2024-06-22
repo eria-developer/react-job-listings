@@ -1,10 +1,29 @@
-import React from "react";
-import jobs from "../jobs.json";
-import JobListing from "./JobListing";
+import React, { useEffect, useState } from "react";
+import JobListing from "../components/JobListing";
+import Spinner from "./Spinner";
 
-const JobListings = () => {
-  //   console.log(jobs);
-  const recent_jobs = jobs.slice(0, 3);
+const JobListings = ({ isHome = false }) => {
+  const [jobs, setJobs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      const apiUrl = isHome ? "/api/jobs?_limit=3" : "/api/jobs";
+
+      try {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        setJobs(data);
+      } catch (error) {
+        console.log("Error fetching data: ", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
   return (
     <>
       <section className="bg-blue-50 px-4 py-10">
@@ -13,9 +32,11 @@ const JobListings = () => {
             Browse Jobs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recent_jobs.map((job) => (
-              <JobListing job={job} key={job.id} />
-            ))}
+            {isLoading ? (
+              <Spinner loading={isLoading} />
+            ) : (
+              jobs.map((job) => <JobListing job={job} key={job.id} />)
+            )}
           </div>
         </div>
       </section>
